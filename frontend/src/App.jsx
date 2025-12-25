@@ -6,6 +6,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute'
 import RoleProtectedRoute from './components/auth/RoleProtectedRoute'
 import Dashboard from './pages/Dashboard'
 import AdminDashboard from './pages/AdminDashboard'
+import Wishlist from './pages/Wishlist'
 
 const App = () => {
   return (
@@ -32,6 +33,15 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Cart/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path='/Wishlist'
+          element={
+            <ProtectedRoute>
+              <Wishlist/>
             </ProtectedRoute>
           }
         />
