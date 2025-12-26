@@ -15,8 +15,8 @@
   --color-SBG: oklch(96.8% 0.007 247.896);
 
   /* dark colours */
-  --color-Dpri: oklch(62.3% 0.214 259.815);
-  --color-Dsec: oklch(83.7% 0.128 66.29);
+  --color-Dpri: oklch(68.5% 0.169 237.323);
+  --color-Dsec: oklch(74.6% 0.16 232.661);
   --color-light: oklch(92.9% 0.013 255.508);
   --color-Daccent: oklch(86.9% 0.022 252.894);
   --color-Dtext: oklch(96.8% 0.007 247.896);
@@ -33,4 +33,26 @@
 .scrollbar-hide {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+/* Override specific elements */
+.react-range-slider-input {
+  /* Main container */
+}
+
+.react-range-slider-input .range-slider__range {
+  /* The filled portion between thumbs */
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+}
+
+.react-range-slider-input .range-slider__thumb {
+  /* Individual thumbs */
+  background: #333;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border: none;
+}
+
+.react-range-slider-input .range-slider__thumb:hover {
+  transform: scale(1.3);
+  background: #555;
 }
