@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-const ChecboxkBtn = ({ ftn, value }) => {
+const ChecboxkBtn = ({ ftn, value, option }) => {
     
     const [isChecked, setIsChecked] = useState(false)
 
     const handleChange = () => {
 
-        if (ftn(value) === 'added') {
+        if (ftn(value, option) === 'added') {
             setIsChecked(!isChecked)
         }
-        else if (ftn(value) === 'removed') {
+        else if (ftn(value, option) === 'removed') {
             setIsChecked(!isChecked)
         }
 

@@ -2,19 +2,27 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../components/layout/Layout'
 import ChecboxkBtn from '../components/buttons/CheckboxBtn'
 import DualRangeSlider from '../components/inputs/DualRangeSlider'
+import FilterSubMenu from '../components/layout/ShoppingPage/FilterSubMenu'
+import { items } from '../fakeData'
 
 const Shop = () => {
 
   // state
-  const [filters,setFilters] = useState([])
-  const [priceRange, setPriceRange] = useState({ min:0, max: 75 })
-
+  const [filterOptions, setFilterOptions] = useState({
+    reviews: [],
+    brands: [],
+    sizes: [],
+    categories: []  
+  })
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 75 })
+  const [originalItems, setOriginalItems] = useState(items)
+  const [items, setItems] = useState(items)
 
   const categories = [
     'Computers',
     'Smartphones',
     'Tablets',
-    'Consoles',
+    'Headphones',
     'Smart appliances'
   ]
 
@@ -34,15 +42,90 @@ const Shop = () => {
     'Lenovo'
   ]
   
-  const handleToggleFilter = (option) => {
+  const handleToggleFilter = (option, category) => {
 
-    if (filters.includes === option) {
-      setFilters(filters.filter(prevFilter => prevFilter !== option))
-      return 'removed'
+    if (category === 'categories') {
+
+      if (filterOptions.categories.includes(option)) {
+        
+        const filtered = filterOptions.categories.filter((prevFilter) => prevFilter !== option)
+
+        setFilterOptions({
+          ...filterOptions, categories: filtered 
+        })
+
+      }
+      else {
+
+        setFilterOptions({
+          ...filterOptions, categories: [...filterOptions.categories, option]
+        })
+
+      }
+
     }
-    else {
-      setFilters([...filters, option])
-      return 'added'
+
+    if (category === 'brands') {
+
+      if (filterOptions.brands.includes(option)) {
+        
+        const filtered = filterOptions.brands.filter((prevFilter) => prevFilter !== option)
+
+        setFilterOptions({
+          ...filterOptions, brands: filtered 
+        })
+
+      }
+      else {
+
+        setFilterOptions({
+          ...filterOptions, brands: [...filterOptions.brands, option]
+        })
+
+      }
+
+    }
+
+    if (category === 'sizes') {
+
+      if (filterOptions.sizes.includes(option)) {
+        
+        const filtered = filterOptions.sizes.filter((prevFilter) => prevFilter !== option)
+
+        setFilterOptions({
+          ...filterOptions, sizes: filtered 
+        })
+
+      }
+      else {
+
+        setFilterOptions({
+          ...filterOptions, sizes: [...filterOptions.sizes, option]
+        })
+
+      }
+
+    }
+
+    if (category === 'reviews') {
+
+      if (filterOptions.reviews.includes(option)) {
+        
+        const filtered = filterOptions.reviews.filter((prevFilter) => prevFilter !== option)
+
+        setFilterOptions({
+          ...filterOptions, reviews: filtered 
+        })
+
+      }
+      else {
+
+        setFilterOptions({
+          ...filterOptions, reviews: [...filterOptions.reviews, option]
+        })
+
+      }
+
     }
 
   }
@@ -125,121 +208,58 @@ const Shop = () => {
             >
 
               {/* categories */}
-              <div
-                className='w-full h-fit flex flex-col gap-4 '
+              <FilterSubMenu
+                name={'Categories'}
               >
-                
-                {/* name */}
-                <div
-                  className='flex flex-col gap-1.5 w-full h-fit'
-                >
-                  <h1
-                    className='font-semibold'
-                  >
-                    Categories
-                  </h1>
-                  <span className='w-full h-0.5 rounded-md bg-pri dark:bg-Dpri'></span>
-                </div>
-                
-                <div
-                  className='flex flex-col gap-2 w-full h-fit'
-                >
-                  {
-                    categories.map((category) => (
-                      <ChecboxkBtn
-                        key={category}
-                        ftn={handleToggleFilter}
-                        value={category}
-                      />
-                    ))
-                  }
-                </div>
-
-              </div>
+                {
+                  categories.map((category) => (
+                    <ChecboxkBtn
+                      key={category}
+                      ftn={handleToggleFilter}
+                      value={category}
+                      option={'Categories'}
+                    />
+                  ))
+                }
+              </FilterSubMenu>
 
               {/* brands */}
-              <div
-                className='w-full h-fit flex flex-col gap-4 '
+              <FilterSubMenu
+                name={'Brands'}
               >
-                
-                {/* name */}
-                <div
-                  className='flex flex-col gap-1.5 w-full h-fit'
-                >
-                  <h1
-                    className='font-semibold'
-                  >
-                    Brands
-                  </h1>
-                  <span className='w-full h-0.5 rounded-md bg-pri dark:bg-Dpri'></span>
-                </div>
-                
-                <div
-                  className='flex flex-col gap-2 w-full h-fit'
-                >
-                  {
-                    brands.map((category) => (
-                      <ChecboxkBtn
-                        key={category}
-                        ftn={handleToggleFilter}
-                        value={category}
-                      />
-                    ))
-                  }
-                </div>
-
-              </div>
+                {
+                  brands.map((category) => (
+                    <ChecboxkBtn
+                      key={category}
+                      ftn={handleToggleFilter}
+                      value={category}
+                      option={'Brands'}
+                    />
+                  ))
+                }
+              </FilterSubMenu>
 
               {/* size */}
-              <div
-                className='w-full h-fit flex flex-col gap-4'
+              <FilterSubMenu
+                name={'Sizes'}
               >
-                
-                {/* name */}
-                <div
-                  className='flex flex-col gap-1.5 w-full h-fit'
-                >
-                  <h1
-                    className='font-semibold'
-                  >
-                    Size
-                  </h1>
-                  <span className='w-full h-0.5 rounded-md bg-pri dark:bg-Dpri'></span>
-                </div>
-                
-                <div
-                  className='flex flex-col gap-2 w-full h-fit'
-                >
-                  {
-                    sizes.map((size) => (
-                      <ChecboxkBtn
-                        key={size}
-                        ftn={handleToggleFilter}
-                        value={size}
-                      />
-                    ))
-                  }
-                </div>
+                {
+                  sizes.map((size) => (
+                    <ChecboxkBtn
+                      key={size}
+                      ftn={handleToggleFilter}
+                      value={size}
+                      option={'Sizes'}
 
-              </div>
+                    />
+                  ))
+                }
+              </FilterSubMenu>
 
-              {/* range */}
-              <div
-                className='w-full h-fit flex flex-col gap-4'
+              {/* price range */}
+              <FilterSubMenu
+                name={'Price'}
               >
-                
-                {/* name */}
-                <div
-                  className='flex flex-col gap-1.5 w-full h-fit'
-                >
-                  <h1
-                    className='font-semibold'
-                  >
-                    Price
-                  </h1>
-                  <span className='w-full h-0.5 rounded-md bg-pri dark:bg-Dpri'></span>
-                </div>
-
                 {/* input boxes */}
                 <div
                   className='w-full h-fit flex flex-row items-center gap-2'
@@ -248,7 +268,7 @@ const Shop = () => {
                   {/* min value */}
                   <input 
                     type="text"
-                    className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent  text-sm '
+                    className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent text-sm outline-none'
                     placeholder='Min'
                     value={priceRange.min}
                     onChange={handleMinValChange}
@@ -257,28 +277,14 @@ const Shop = () => {
                   {/* max value */}
                   <input 
                     type="text" 
-                    className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent  text-sm '
+                    className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent text-sm outline-none'
                     placeholder='Max'
                     value={priceRange.max}
                     onChange={handleMaxValChange}
                   />
 
                 </div>
-                
-                {/* <div
-                  className='px-2'
-                >
-                  <DualRangeSlider
-                    min={priceRange.min}
-                    max={priceRange.max}
-                    initialMin={0}
-                    initialMax={100}
-                    step={0}
-                  />
-                </div> */}
-                
-
-              </div>
+              </FilterSubMenu>
 
             </div>
 
