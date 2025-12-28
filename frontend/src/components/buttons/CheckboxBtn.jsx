@@ -6,12 +6,8 @@ const ChecboxkBtn = ({ ftn, value, option }) => {
 
     const handleChange = () => {
 
-        if (ftn(value, option) === 'added') {
-            setIsChecked(!isChecked)
-        }
-        else if (ftn(value, option) === 'removed') {
-            setIsChecked(!isChecked)
-        }
+        ftn(value, option)
+        setIsChecked(!isChecked)
 
     }
 

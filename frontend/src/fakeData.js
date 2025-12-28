@@ -13,25 +13,27 @@ import tablet2 from './assets/tablet2.jpg'
 export const items = [
     {
         id: 0,
-        name: 'headphone 1',
+        name: 'Headphone 1',
         discount: null,
         price: 100,
         category: 'Headphones',
         size: 'L',
         brand: 'Samsung',
         stock: 200,
-        image: headphone1
+        image: headphone1,
+        rating: 4.2
     },
     {
         id: 2,
-        name: 'headphone 2',
+        name: 'Headphone 2',
         discount: 0.2,
         price: 65,
         category: 'Headphones',
         size: 'M',
         brand: 'Lenovo',
         stock: 100,
-        image: headphone2
+        image: headphone2,
+        rating: 5.0
     },
     {
         id: 3,
@@ -42,7 +44,8 @@ export const items = [
         size: 'S',
         brand: 'Apple',
         stock: 200,
-        image: laptop1
+        image: laptop1,
+        rating: 2.0
     },
     {
         id: 4,
@@ -53,29 +56,32 @@ export const items = [
         size: 'S',
         brand: 'Xiaomi',
         stock: 300,
-        image: laptop2
+        image: laptop2,
+        rating: 4.0
     },
     {
         id: 5,
-        name: 'tablet 1',
+        name: 'Tablet 1',
         discount: 0.5,
         price: 470,
         category: 'Tablets',
         size: 'M',
         brand: 'Apple',
         stock: 500,
-        image: tablet1
+        image: tablet1,
+        rating: 4.0
     },
     {
         id: 6,
-        name: 'tablet 2',
+        name: 'Tablet 2',
         discount: 0.4,
         price: 300,
         category: 'Tablets',
         size: 'S',
         brand: 'Apple',
         stock: 200,
-        image: tablet2
+        image: tablet2,
+        rating: 3.5
     },
     {
         id: 7,
@@ -86,7 +92,8 @@ export const items = [
         size: 'S',
         brand: 'Apple',
         stock: 100,
-        image: smartphone1
+        image: smartphone1,
+        rating: 4.9
     },
     {
         id: 8,
@@ -97,7 +104,8 @@ export const items = [
         size: 'L',
         brand: 'Nvidia',
         stock: 200,
-        image: smartphone2
+        image: smartphone2,
+        rating: 4.5
     },
     {
         id: 9,
@@ -108,7 +116,8 @@ export const items = [
         size: 'S',
         brand: 'Xiaomi',
         stock: 200,
-        image: smart1
+        image: smart1,
+        rating: 4.5
     },
     {
         id: 3,
@@ -119,7 +128,8 @@ export const items = [
         size: 'S',
         brand: 'Nvidia',
         stock: 500,
-        image: smart2
+        image: smart2,
+        rating: 4.2
     },
 
 ]

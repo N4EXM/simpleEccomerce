@@ -4,19 +4,20 @@ import ChecboxkBtn from '../components/buttons/CheckboxBtn'
 import DualRangeSlider from '../components/inputs/DualRangeSlider'
 import FilterSubMenu from '../components/layout/ShoppingPage/FilterSubMenu'
 import { items } from '../fakeData'
+import ItemCard from '../components/cards/ItemCard'
 
 const Shop = () => {
 
   // state
   const [filterOptions, setFilterOptions] = useState({
-    reviews: [],
-    brands: [],
-    sizes: [],
-    categories: []  
+    Reviews: [],
+    Brands: [],
+    Sizes: [],
+    Categories: []  
   })
   const [priceRange, setPriceRange] = useState({ min: 0, max: 75 })
   const [originalItems, setOriginalItems] = useState(items)
-  const [items, setItems] = useState(items)
+  const [filteredItems, setFilteredItems] = useState(items)
 
   const categories = [
     'Computers',
@@ -41,93 +42,58 @@ const Shop = () => {
     'Xiaomi',
     'Lenovo'
   ]
-  
+
+  // const handleToggleFilter = (option, category) => {
+  //   setFilterOptions(prev => {
+  //     if (category === 'Categories') {
+  //       return {
+  //         ...prev,
+  //         categories: prev.Categories.includes(option)
+  //           ? prev.Categories.filter(item => item !== option)
+  //           : [...prev.Categories, option]
+  //       }
+  //     }
+      
+  //     if (category === 'Brands') {
+  //       return {
+  //         ...prev,
+  //         brands: prev.Brands.includes(option)
+  //           ? prev.Brands.filter(item => item !== option)
+  //           : [...prev.Brands, option]
+  //       }
+  //     }
+      
+  //     if (category === 'Sizes') {
+  //       return {
+  //         ...prev,
+  //         sizes: prev.Sizes.includes(option)
+  //           ? prev.Sizes.filter(item => item !== option)
+  //           : [...prev.Sizes, option]
+  //       }
+  //     }
+      
+  //     if (category === 'reviews') {
+  //       return {
+  //         ...prev,
+  //         reviews: prev.Reviews.includes(option)
+  //           ? prev.Reviews.filter(item => item !== option)
+  //           : [...prev.Reviews, option]
+  //       }
+  //     }
+      
+  //     return prev
+  //   })
+
+  //   return true
+  // }
+
   const handleToggleFilter = (option, category) => {
-
-    if (category === 'categories') {
-
-      if (filterOptions.categories.includes(option)) {
-        
-        const filtered = filterOptions.categories.filter((prevFilter) => prevFilter !== option)
-
-        setFilterOptions({
-          ...filterOptions, categories: filtered 
-        })
-
-      }
-      else {
-
-        setFilterOptions({
-          ...filterOptions, categories: [...filterOptions.categories, option]
-        })
-
-      }
-
-    }
-
-    if (category === 'brands') {
-
-      if (filterOptions.brands.includes(option)) {
-        
-        const filtered = filterOptions.brands.filter((prevFilter) => prevFilter !== option)
-
-        setFilterOptions({
-          ...filterOptions, brands: filtered 
-        })
-
-      }
-      else {
-
-        setFilterOptions({
-          ...filterOptions, brands: [...filterOptions.brands, option]
-        })
-
-      }
-
-    }
-
-    if (category === 'sizes') {
-
-      if (filterOptions.sizes.includes(option)) {
-        
-        const filtered = filterOptions.sizes.filter((prevFilter) => prevFilter !== option)
-
-        setFilterOptions({
-          ...filterOptions, sizes: filtered 
-        })
-
-      }
-      else {
-
-        setFilterOptions({
-          ...filterOptions, sizes: [...filterOptions.sizes, option]
-        })
-
-      }
-
-    }
-
-    if (category === 'reviews') {
-
-      if (filterOptions.reviews.includes(option)) {
-        
-        const filtered = filterOptions.reviews.filter((prevFilter) => prevFilter !== option)
-
-        setFilterOptions({
-          ...filterOptions, reviews: filtered 
-        })
-
-      }
-      else {
-
-        setFilterOptions({
-          ...filterOptions, reviews: [...filterOptions.reviews, option]
-        })
-
-      }
-
-    }
-
+    setFilterOptions(prev => ({
+      ...prev,
+      [category]: prev[category].includes(option)
+        ? prev[category].filter(item => item !== option)
+        : [...prev[category], option]
+    }))
   }
 
   const handlePositiveNumberInput = (e) => {
@@ -176,8 +142,8 @@ const Shop = () => {
   }
 
   useEffect(() => {
-    console.log(filters)
-  }, [filters])
+    console.log(filterOptions)
+  }, [filterOptions])
 
   return (
     <Layout>
@@ -294,10 +260,22 @@ const Shop = () => {
 
         {/* items container */}
         <div
-          className='col-span-8 row-span-full w-full h-full p-8'
+          className='col-span-8 row-span-full w-full h-full p-8 grid grid-cols-3 overflow-y-scroll gap-5 scrollbar-hide'
         >
-          
-
+          {
+            filteredItems.map((item) => (
+              <ItemCard
+                image={item.image}
+                name={item.name}
+                size={item.size}
+                discount={item.discount}
+                stock={item.stock}
+                brand={item.brand}
+                rating={item.rating}
+                price={item.price}
+              />
+            ))
+          }
         </div>
 
       </div>
