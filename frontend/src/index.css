@@ -6,7 +6,7 @@
   --font-poppins: 'Poppins';
 
   /* light colours */
-  --color-pri: oklch(54.6% 0.245 262.881);
+  --color-pri: oklch(62.3% 0.214 259.815);
   --color-sec: oklch(70.7% 0.165 254.624);
   --color-thi: oklch(88.2% 0.059 254.128);
   --color-dark: oklch(20.8% 0.042 265.755);
@@ -57,4 +57,16 @@
 .react-range-slider-input .range-slider__thumb:hover {
   transform: scale(1.3);
   background: #555;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

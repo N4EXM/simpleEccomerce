@@ -13,9 +13,9 @@ const Shop = () => {
     Reviews: [],
     Brands: [],
     Sizes: [],
-    Categories: []  
+    Categories: [],
+    priceRange: { min: 0, max:75 }
   })
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 75 })
   const [originalItems, setOriginalItems] = useState(items)
   const [filteredItems, setFilteredItems] = useState(items)
 
@@ -41,6 +41,10 @@ const Shop = () => {
     'Samsung',
     'Xiaomi',
     'Lenovo'
+  ]
+
+  const ratings = [
+    5,4,3,2,1
   ]
 
   // const handleToggleFilter = (option, category) => {
@@ -96,6 +100,12 @@ const Shop = () => {
     }))
   }
 
+  const handleFilterItems = () => {
+
+    
+
+  }
+
   const handlePositiveNumberInput = (e) => {
     // Get the input value
     let value = e.target.value;
@@ -122,14 +132,22 @@ const Shop = () => {
     // Update the input value
     e.target.value = value;
 
-    return value
+    return parseFloat(value)
   };
 
   const handleMinValChange = (e) => {
 
     const newValue = handlePositiveNumberInput(e)
 
-    setPriceRange({...priceRange, min: newValue})
+    setFilterOptions(prev => ({
+
+      ...prev,
+      priceRange: {
+        ...prev.priceRange,
+        min: newValue
+      }
+
+    }))
 
   }
 
@@ -137,7 +155,15 @@ const Shop = () => {
 
     const newValue = handlePositiveNumberInput(e)
 
-    setPriceRange({...priceRange, max: newValue})
+    setFilterOptions(prev => ({
+
+      ...prev,
+      priceRange: {
+        ...prev.priceRange,
+        max: newValue
+      }
+
+    }))
 
   }
 
@@ -172,6 +198,44 @@ const Shop = () => {
             <div
               className='flex flex-col gap-5 h-full w-full overflow-y-scroll scrollbar-hide'
             >
+
+              {/* rating */}
+              <FilterSubMenu
+                name={'Reviews'}
+              >
+                {
+                  ratings.map((rating) => {
+                  
+                    let numOfStars = ''
+
+                    for (let i = 0; i < rating; i++) {
+                    
+                      numOfStars = numOfStars + '★'
+                    
+                    }
+
+                    return (
+
+                      <div
+                        className='flex flex-row items-center gap-2'
+                      >
+                        <ChecboxkBtn
+                          key={rating}
+                          ftn={handleToggleFilter}
+                          value={rating}
+                          option={'Reviews'}
+                        />
+                        <span
+                          className='text-amber-500 dark:text-amber-400'
+                        >
+                          {numOfStars}
+                        </span>
+                      </div>
+
+                    )
+                  })
+                }
+              </FilterSubMenu>
 
               {/* categories */}
               <FilterSubMenu
@@ -233,19 +297,19 @@ const Shop = () => {
 
                   {/* min value */}
                   <input 
-                    type="text"
-                    className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent text-sm outline-none'
+                    type="number"
+                    className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent text-sm outline-none '
                     placeholder='Min'
-                    value={priceRange.min}
+                    value={filterOptions.priceRange.min}
                     onChange={handleMinValChange}
                   />
 
                   {/* max value */}
                   <input 
-                    type="text" 
+                    type="number" 
                     className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent text-sm outline-none'
                     placeholder='Max'
-                    value={priceRange.max}
+                    value={filterOptions.priceRange.max}
                     onChange={handleMaxValChange}
                   />
 
@@ -273,6 +337,7 @@ const Shop = () => {
                 brand={item.brand}
                 rating={item.rating}
                 price={item.price}
+                category={item.category}
               />
             ))
           }
