@@ -14,7 +14,7 @@ const Shop = () => {
     Brands: [],
     Sizes: [],
     Categories: [],
-    priceRange: { min: 0, max:75 }
+    priceRange: { min: 0, max:1000 }
   })
   const [originalItems, setOriginalItems] = useState(items)
   const [filteredItems, setFilteredItems] = useState(items)
@@ -92,17 +92,70 @@ const Shop = () => {
   // }
 
   const handleToggleFilter = (option, category) => {
+
     setFilterOptions(prev => ({
       ...prev,
       [category]: prev[category].includes(option)
         ? prev[category].filter(item => item !== option)
         : [...prev[category], option]
     }))
+
   }
 
   const handleFilterItems = () => {
 
+    // filter through reviews
+    let filterItems = originalItems
+
+    if (filterOptions.Reviews.length > 0) {
+
+      filterItems = filterItems.filter(item => 
+        filterOptions.Reviews.some(review => 
+        Math.floor(item.rating) >= review // 4 star filter shows 4.0, 4.5, 5.0
+      ))
+
+    }
+
+    // filter through brands
+    if (filterOptions.Brands.length > 0) {
+
+      filterItems = filterItems.filter(item => 
+        filterOptions.Brands.some(brand => 
+          item.brand.toLowerCase() == brand.toLowerCase()
+        )
+      )
+
+    }
+
+    // filter through categories
+    if (filterOptions.Categories.length > 0) {
+
+      filterItems = filterItems.filter(item => 
+        filterOptions.Categories.some(category => 
+          item.category.toLowerCase() == category.toLowerCase()
+        )
+      )
+
+    }
+
+    // filter through sizes
+    if (filterOptions.Sizes.length > 0) {
+
+      filterItems = filterItems.filter(item => 
+        filterOptions.Sizes.some(size => 
+          item.size.toLowerCase() == size.toLowerCase()
+        )
+      )
+
+    }
+
+    // filter through price range
+    filterItems = filterItems.filter(item =>
+      item.price >= filterOptions.priceRange.min && item.price <= filterOptions.priceRange.max
+    )
     
+    // console.log(filterItems)
+    setFilteredItems(filterItems)
 
   }
 
@@ -168,8 +221,10 @@ const Shop = () => {
   }
 
   useEffect(() => {
-    console.log(filterOptions)
+    console.log('filter options:',filterOptions)
+    handleFilterItems()
   }, [filterOptions])
+
 
   return (
     <Layout>
@@ -217,10 +272,10 @@ const Shop = () => {
                     return (
 
                       <div
+                        key={rating}
                         className='flex flex-row items-center gap-2'
                       >
                         <ChecboxkBtn
-                          key={rating}
                           ftn={handleToggleFilter}
                           value={rating}
                           option={'Reviews'}
@@ -300,7 +355,11 @@ const Shop = () => {
                     type="number"
                     className='w-1/2 h-fit p-2 pl-2.5 rounded-md border-2 border-Daccent dark:border-accent text-sm outline-none '
                     placeholder='Min'
-                    value={filterOptions.priceRange.min}
+                    value={
+                      filterOptions.priceRange.min === null
+                      ? 0
+                      : filterOptions.priceRange.min
+                    }
                     onChange={handleMinValChange}
                   />
 
@@ -327,19 +386,57 @@ const Shop = () => {
           className='col-span-8 row-span-full w-full h-full p-8 grid grid-cols-3 overflow-y-scroll gap-5 scrollbar-hide'
         >
           {
-            filteredItems.map((item) => (
-              <ItemCard
-                image={item.image}
-                name={item.name}
-                size={item.size}
-                discount={item.discount}
-                stock={item.stock}
-                brand={item.brand}
-                rating={item.rating}
-                price={item.price}
-                category={item.category}
-              />
-            ))
+            
+          }
+          {
+            filteredItems.length > 0
+            ? filteredItems.map((item) => (
+                <ItemCard
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  name={item.name}
+                  size={item.size}
+                  discount={item.discount}
+                  stock={item.stock}
+                  brand={item.brand}
+                  rating={item.rating}
+                  price={item.price}
+                  category={item.category}
+                />
+              ))
+            : <div
+                className='flex items-center justify-center w-full h-full col-span-3'
+              >
+
+                <div
+                  className='flex flex-col gap-4 w-full h-full items-center justify-center bg-SBG dark:bg-DSBG rounded-md'
+                >
+                  <span
+                    className='bg-BG dark:bg-DBG p-3 w-fit h-fit rounded-full text-pri dark:text-Dpri shadow shadow-Daccent dark:shadow-slate-950'
+                  >
+                    <svg  xmlns="http://www.w3.org/2000/svg" width={48} height={48} fill={"currentColor"} viewBox="0 0 24 24">{/* Boxicons v3.0.6 https://boxicons.com | License  https://docs.boxicons.com/free */}<path d="M2.21 9.39c-.19.25-.25.57-.17.87l2.8 10.26c.24.87 1.03 1.47 1.93 1.47h10.47c.9 0 1.69-.61 1.93-1.47l2.8-10.26c.08-.3.02-.62-.17-.87a.99.99 0 0 0-.79-.39h-1.42l-3.71-6.5-1.74.99 3.15 5.5H6.72l3.15-5.5-1.74-.99L4.42 9H3a1 1 0 0 0-.79.39M13 13h2v5h-2zm-4 0h2v5H9z"></path></svg>
+                  </span>
+
+                  {/* text */}
+                  <div
+                    className='flex flex-col gap-1 w-fit h-fit text-center'
+                  >
+                    <h1
+                      className='text-xl font-semibold text-text dark:text-Dtext'
+                    >
+                      Oops!
+                    </h1>
+                    <p
+                      className='text-accent dark:text-Daccent text-sm w-70'
+                    >
+                      looks like no items match these filters try changing the filters 
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
           }
         </div>
 

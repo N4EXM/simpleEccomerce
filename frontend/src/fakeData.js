@@ -24,7 +24,7 @@ export const items = [
         rating: 4.2
     },
     {
-        id: 2,
+        id: 1,
         name: 'Headphone 2',
         discount: 0.2,
         price: 65,
@@ -36,7 +36,7 @@ export const items = [
         rating: 5.0
     },
     {
-        id: 3,
+        id: 2,
         name: 'Laptop 1',
         discount: null,
         price: 820,
@@ -48,7 +48,7 @@ export const items = [
         rating: 2.0
     },
     {
-        id: 4,
+        id: 3,
         name: 'Laptop 2',
         discount: null,
         price: 820,
@@ -57,10 +57,10 @@ export const items = [
         brand: 'Xiaomi',
         stock: 300,
         image: laptop2,
-        rating: 4.0
+        rating: 1.0
     },
     {
-        id: 5,
+        id: 4,
         name: 'Tablet 1',
         discount: 0.5,
         price: 470,
@@ -72,7 +72,7 @@ export const items = [
         rating: 4.0
     },
     {
-        id: 6,
+        id: 5,
         name: 'Tablet 2',
         discount: 0.4,
         price: 300,
@@ -84,7 +84,7 @@ export const items = [
         rating: 3.5
     },
     {
-        id: 7,
+        id: 6,
         name: 'Smartphone 1',
         discount: null,
         price: 600,
@@ -96,7 +96,7 @@ export const items = [
         rating: 4.9
     },
     {
-        id: 8,
+        id: 7,
         name: 'Smartphone 2',
         discount: null,
         price: 820,
@@ -108,7 +108,7 @@ export const items = [
         rating: 4.5
     },
     {
-        id: 9,
+        id: 8,
         name: 'Smart 1',
         discount: 0.3,
         price: 42.50,
@@ -120,7 +120,7 @@ export const items = [
         rating: 4.5
     },
     {
-        id: 3,
+        id: 9,
         name: 'Smart 2',
         discount: null,
         price: 14.82,
