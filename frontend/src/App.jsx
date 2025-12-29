@@ -7,6 +7,8 @@ import RoleProtectedRoute from './components/auth/RoleProtectedRoute'
 import Dashboard from './pages/Dashboard'
 import AdminDashboard from './pages/AdminDashboard'
 import Wishlist from './pages/Wishlist'
+import Login from './pages/auth/Login'
+import Register from './pages/auth/Register'
 
 const App = () => {
   return (
@@ -25,6 +27,16 @@ const App = () => {
         {/* item page */}
         <Route
           path='/item/:id'
+        />
+
+        <Route
+          path='/Login'
+          element={<Login/>}
+        />
+
+        <Route
+          path='/Register'
+          element={<Register/>}
         />
 
         {/* user cart page */}

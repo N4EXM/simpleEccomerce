@@ -14,7 +14,7 @@ const Shop = () => {
     Brands: [],
     Sizes: [],
     Categories: [],
-    priceRange: { min: 0, max:1000 }
+    priceRange: { min: 0, max: 1000 }
   })
   const [originalItems, setOriginalItems] = useState(items)
   const [filteredItems, setFilteredItems] = useState(items)
@@ -154,7 +154,7 @@ const Shop = () => {
       item.price >= filterOptions.priceRange.min && item.price <= filterOptions.priceRange.max
     )
     
-    // console.log(filterItems)
+    console.log(filterItems)
     setFilteredItems(filterItems)
 
   }
@@ -221,7 +221,6 @@ const Shop = () => {
   }
 
   useEffect(() => {
-    console.log('filter options:',filterOptions)
     handleFilterItems()
   }, [filterOptions])
 
@@ -385,9 +384,6 @@ const Shop = () => {
         <div
           className='col-span-8 row-span-full w-full h-full p-8 grid grid-cols-3 overflow-y-scroll gap-5 scrollbar-hide'
         >
-          {
-            
-          }
           {
             filteredItems.length > 0
             ? filteredItems.map((item) => (
