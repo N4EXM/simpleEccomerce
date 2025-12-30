@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../components/layout/Layout'
-import ChecboxkBtn from '../components/buttons/CheckboxBtn'
+import CheckboxFilterBtn from '../components/buttons/CheckboxFilterBtn'
 import DualRangeSlider from '../components/inputs/DualRangeSlider'
 import FilterSubMenu from '../components/layout/ShoppingPage/FilterSubMenu'
 import { items } from '../fakeData'
@@ -274,7 +274,7 @@ const Shop = () => {
                         key={rating}
                         className='flex flex-row items-center gap-2'
                       >
-                        <ChecboxkBtn
+                        <CheckboxFilterBtn
                           ftn={handleToggleFilter}
                           value={rating}
                           option={'Reviews'}
@@ -297,7 +297,7 @@ const Shop = () => {
               >
                 {
                   categories.map((category) => (
-                    <ChecboxkBtn
+                    <CheckboxFilterBtn
                       key={category}
                       ftn={handleToggleFilter}
                       value={category}
@@ -313,7 +313,7 @@ const Shop = () => {
               >
                 {
                   brands.map((category) => (
-                    <ChecboxkBtn
+                    <CheckboxFilterBtn
                       key={category}
                       ftn={handleToggleFilter}
                       value={category}
@@ -329,7 +329,7 @@ const Shop = () => {
               >
                 {
                   sizes.map((size) => (
-                    <ChecboxkBtn
+                    <CheckboxFilterBtn
                       key={size}
                       ftn={handleToggleFilter}
                       value={size}
@@ -382,7 +382,7 @@ const Shop = () => {
 
         {/* items container */}
         <div
-          className='col-span-8 row-span-full w-full h-full p-8 grid grid-cols-3 overflow-y-scroll gap-5 scrollbar-hide'
+          className='col-span-8 row-span-full w-full h-full p-8 grid lg:grid-cols-3 overflow-y-scroll gap-5 scrollbar-hide md:grid-cols-2'
         >
           {
             filteredItems.length > 0

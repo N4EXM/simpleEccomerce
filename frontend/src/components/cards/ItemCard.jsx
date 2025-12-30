@@ -8,12 +8,12 @@ const ItemCard = ({image, name, size, discount, stock, price, brand, rating, cat
 
             {/* images */}
             <div
-                className='w-full h-6/9 rounded-t-md overflow-y-hidden bg-white p-4 xl:p-8 relative'
+                className='w-full h-6/9 rounded-t-md overflow-y-hidden bg-white p-4  relative'
             >
                 <img 
                     src={image} 
                     alt="productImage" 
-                    className='rounded-t-md'
+                    className='rounded-t-md w-full h-full'
                 />
                 <span
                     className={`absolute right-3 top-3 text-xs font-medium bg-thi text-pri p-1 px-2 rounded-md ${discount !== null ? 'block' : 'hidden'}`}
