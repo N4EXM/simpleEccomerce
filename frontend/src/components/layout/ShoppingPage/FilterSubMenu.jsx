@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Separator from '../Separator'
 
 const FilterSubMenu = ({ children, name }) => {
 
@@ -21,13 +22,13 @@ const FilterSubMenu = ({ children, name }) => {
             {name}
           </h1>
           <button
-            className={`p-1 rounded-full hover:bg-BG dark:hover:bg-DBG duration-200 text-text/70 dark:text-Dtext/70 ${hiddenActive ? 'rotate-180' : 'rotate-0'}`}
+            className={`p-1 rounded-full hover:bg-BG dark:hover:bg-DBG duration-200 text-pri dark:text-Dpri ${hiddenActive ? 'rotate-180' : 'rotate-0'}`}
             onClick={() => setHiddenActive(!hiddenActive)}
           >
             <svg  xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill={"currentColor"} viewBox="0 0 24 24">{/* Boxicons v3.0.6 https://boxicons.com | License  https://docs.boxicons.com/free */}<path d="M17.35 8H6.65c-.64 0-.99.76-.56 1.24l5.35 6.11c.3.34.83.34 1.13 0l5.35-6.11C18.34 8.76 18 8 17.36 8Z"></path></svg>
           </button>
         </div>
-        <span className='w-full h-0.5 rounded-md bg-pri dark:bg-Dpri'></span>
+        <Separator/>
       </div>
       
       <div

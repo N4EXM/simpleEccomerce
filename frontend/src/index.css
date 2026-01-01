@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
@@ -7,6 +8,7 @@
 @theme {
 
   --font-poppins: 'Poppins';
+  --font-montserrat: 'Montserrat';
 
   /* light colours */
   --color-pri: oklch(69.6% 0.17 162.48);
@@ -16,7 +18,7 @@
   --color-accent: oklch(44.6% 0.043 257.281);
   --color-text: oklch(20.8% 0.042 265.755);
   --color-BG: oklch(92.9% 0.013 255.508);
-  --color-SBG: oklch(96.8% 0.007 247.896);
+  --color-SBG: oklch(98.4% 0.003 247.858);
 
   /* dark colours */
   --color-Dpri: oklch(76.5% 0.177 163.223);
