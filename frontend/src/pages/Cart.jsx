@@ -41,8 +41,7 @@ const Cart = () => {
             >
               Your Cart
             </h1>
-              {/* <span className='w-full h-[1.5px] rounded-full bg-accent/60 dark:bg-gray-700'></span> */}
-              <Separator/>
+            <Separator/>
           </div>
 
           {/* attributes */}
@@ -82,7 +81,7 @@ const Cart = () => {
             className='flex flex-col gap-2 w-full h-full overflow-y-scroll scrollbar-hide '
           >
             {
-              items.map((item, index) => (
+              cart.map((item, index) => (
                 
                 <div
                   className='flex flex-col w-full h-fit gap-2'
@@ -107,11 +106,11 @@ const Cart = () => {
 
         {/* total pricing container */}
         <div
-          className='col-span-4 row-span-12 flex flex-col gap-8 w-full h-3/5 p-8 pr-20'
+          className='col-span-4 row-span-12 flex flex-col gap-8 w-full min-h-3/5 h-fit p-8 pr-20'
         >
 
           <div
-            className='w-full h-full bg-SBG dark:bg-DSBG rounded-md p-5 flex flex-col gap-4'
+            className='w-full h-full bg-SBG dark:bg-DSBG rounded-md p-5 flex flex-col gap-4 shadow shadow-Daccent dark:shadow-black'
           > 
 
             {/* title */}

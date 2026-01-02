@@ -43,7 +43,7 @@ export const items = [
         category: 'Computers',
         size: 'S',
         brand: 'Apple',
-        stock: 200,
+        stock: 0,
         image: laptop1,
         rating: 2.0
     },
