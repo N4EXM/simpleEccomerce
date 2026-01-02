@@ -70,7 +70,7 @@ const Wishlist = () => {
                             <p
                                 className='font-medium'
                             >
-                                Stock status
+                                Stock status    
                             </p>
                             
                         </div>

@@ -11,18 +11,18 @@
   --font-montserrat: 'Montserrat';
 
   /* light colours */
-  --color-pri: oklch(69.6% 0.17 162.48);
+  --color-pri: oklch(43.2% 0.095 166.913);
   --color-sec: oklch(59.6% 0.145 163.225);
   --color-thi: oklch(90.5% 0.093 164.15);
   --color-dark: oklch(20.8% 0.042 265.755);
   --color-accent: oklch(44.6% 0.043 257.281);
-  --color-text: oklch(20.8% 0.042 265.755);
+  --color-text: oklch(26.2% 0.051 172.552);
   --color-BG: oklch(92.9% 0.013 255.508);
   --color-SBG: oklch(98.4% 0.003 247.858);
 
   /* dark colours */
-  --color-Dpri: oklch(76.5% 0.177 163.223);
-  --color-Dsec: oklch(84.5% 0.143 164.978);
+  --color-Dpri: oklch(59.6% 0.145 163.225);
+  --color-Dsec: oklch(69.6% 0.17 162.48);
   --color-Dthi: oklch(90.5% 0.093 164.15);
   --color-light: oklch(92.9% 0.013 255.508);
   --color-Daccent: oklch(86.9% 0.022 252.894);

@@ -13,7 +13,7 @@ const ThemeToggle = () => {
                 transition-all duration-300 ease-in-out
                 focus:outline-none cursor-pointer
                 ${theme === 'dark' 
-                ? 'bg-pri ' 
+                ? 'bg-pri dark:bg-Dpri' 
                 : 'bg-gray-400/70'
             }
             `}

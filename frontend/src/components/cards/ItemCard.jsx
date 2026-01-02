@@ -1,9 +1,21 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
 
 const ItemCard = ({image, name, size, discount, stock, price, brand, rating, category, id}) => {
+    
+    // navigation
+    const navigation = useNavigate()
+
+    const handleNavigate = () => {
+        navigation(`/Item/${id}`)
+    }
+    
     return (
         <div
             className='flex flex-col w-full max-h-80 h-96 shadow shadow-Daccent dark:shadow-slate-950 rounded-md bg-slate-100 dark:bg-DSBG'
+            onClick={() => handleNavigate()}
         >
 
             {/* images */}

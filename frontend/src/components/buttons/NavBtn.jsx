@@ -11,13 +11,17 @@ const NavBtn = ({ path, name, icon, notifActive, notifVal }) => {
             <span
                 className='flex flex-row items-center gap-2 font-medium'
             >
-                {icon}
+                <i
+                    className='text-pri dark:text-Dpri'
+                >
+                    {icon}
+                </i>
                 {name}
             </span>
             {   
                 notifActive
                 &&  <span
-                        className='p-1 px-2 text-xs rounded-full font-medium bg-pri text-text'
+                        className='p-1 px-2 text-xs rounded-full font-medium bg-pri dark:bg-Dpri text-Dtext'
                     >
                         {notifVal}
                     </span>

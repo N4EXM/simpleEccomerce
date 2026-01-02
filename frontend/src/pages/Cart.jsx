@@ -215,7 +215,7 @@ const Cart = () => {
 
             {/* purchase button */}
             <button
-              className='text-text p-2 rounded-md bg-pri dark:bg-Dpri hover:bg-sec dark:hover:bg-Dsec font-medium'
+              className='dark:text-text text-Dtext p-2 rounded-md bg-pri dark:bg-Dpri hover:bg-sec dark:hover:bg-Dsec font-medium'
             >
               Proceed to Checkout
             </button>

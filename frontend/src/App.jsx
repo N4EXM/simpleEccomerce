@@ -9,6 +9,7 @@ import AdminDashboard from './pages/AdminDashboard'
 import Wishlist from './pages/Wishlist'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
+import ItemPage from './pages/ItemPage'
 
 const App = () => {
   return (
@@ -26,7 +27,8 @@ const App = () => {
 
         {/* item page */}
         <Route
-          path='/item/:id'
+          path='/item/:itemId'
+          element={<ItemPage/>}
         />
 
         <Route

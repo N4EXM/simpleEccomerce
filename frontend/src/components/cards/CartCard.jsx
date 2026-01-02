@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const CartCard = ({ image, name, category, price }) => {
+const CartCard = ({ id, image, name, category, price }) => {
 
     const [quantity, setQuantity] = useState(1)
     const [subtotal, setSubtotal] = useState(0)
