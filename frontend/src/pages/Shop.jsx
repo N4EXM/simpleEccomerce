@@ -12,7 +12,6 @@ const Shop = () => {
   const [filterOptions, setFilterOptions] = useState({
     Reviews: [],
     Brands: [],
-    Sizes: [],
     Categories: [],
     priceRange: { min: 0, max: 1000 }
   })
@@ -25,14 +24,6 @@ const Shop = () => {
     'Tablets',
     'Headphones',
     'Smart appliances'
-  ]
-
-  const sizes = [
-    'S',
-    'M',
-    'L',
-    'XL',
-    '2XL'
   ]
 
   const brands = [
@@ -133,17 +124,6 @@ const Shop = () => {
       filterItems = filterItems.filter(item => 
         filterOptions.Categories.some(category => 
           item.category.toLowerCase() == category.toLowerCase()
-        )
-      )
-
-    }
-
-    // filter through sizes
-    if (filterOptions.Sizes.length > 0) {
-
-      filterItems = filterItems.filter(item => 
-        filterOptions.Sizes.some(size => 
-          item.size.toLowerCase() == size.toLowerCase()
         )
       )
 
@@ -318,23 +298,6 @@ const Shop = () => {
                       ftn={handleToggleFilter}
                       value={category}
                       option={'Brands'}
-                    />
-                  ))
-                }
-              </FilterSubMenu>
-
-              {/* size */}
-              <FilterSubMenu
-                name={'Sizes'}
-              >
-                {
-                  sizes.map((size) => (
-                    <CheckboxFilterBtn
-                      key={size}
-                      ftn={handleToggleFilter}
-                      value={size}
-                      option={'Sizes'}
-
                     />
                   ))
                 }

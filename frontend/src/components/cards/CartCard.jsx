@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import QuantityInput from '../inputs/QuantityInput'
 
 const CartCard = ({ id, image, name, category, price }) => {
 
@@ -12,7 +13,7 @@ const CartCard = ({ id, image, name, category, price }) => {
 
     return (
         <div
-            className='flex flex-row gap-4 w-full h-fit  rounded-md'
+            className='flex flex-row gap-4 w-full h-fit rounded-md'
         >
             
             {/* delete button container */}
@@ -73,28 +74,11 @@ const CartCard = ({ id, image, name, category, price }) => {
                 className='flex items-center w-2/12 h-full justify-center'
             >
 
-                <div
-                    className='flex flex-row items-center border-2 border-gray-300 rounded-md w-fit text-text dark:text-Dtext dark:border-gray-700'
-                >
-                    <button
-                        className='p-1 hover:text-Dtext hover:bg-pri rounded-l duration-200'
-                        onClick={() => handleQuantityChange(quantity - 1)}
-                    >
-                        <svg  xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill={"currentColor"} viewBox="0 0 24 24"><path d="M3 11h18v2H3z"></path></svg>
-                    </button>
-                    <input
-                        className='px-2 border-x-2 appearance-none border-gray-300 dark:border-gray-700 bg-SBG dark:bg-DSBG outline-none max-w-11 w-11 text-center'
-                        value={quantity}
-                        type='number'
-                        onChange={(e) => handleQuantityChange(e.target.value)}
-                    />
-                    <button
-                        className='p-1 hover:text-Dtext hover:bg-pri rounded-r duration-200'
-                        onClick={() => handleQuantityChange(quantity + 1)}
-                    >
-                        <svg  xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill={"currentColor"} viewBox="0 0 24 24">{/* Boxicons v3.0.6 https://boxicons.com | License  https://docs.boxicons.com/free */}<path d="M3 13h8v8h2v-8h8v-2h-8V3h-2v8H3z"></path></svg>
-                    </button>
-                </div>
+                <QuantityInput
+                    value={quantity}
+                    initialValue={quantity}
+                    setValue={setQuantity}
+                />
 
             </div>
 

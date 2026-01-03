@@ -46,7 +46,7 @@ const Cart = () => {
 
           {/* attributes */}
           <div
-            className='flex flex-row items-center bg-SBG dark:bg-DSBG text-text dark:text-Dtext shadow shadow-Daccent dark:shadow-DSBG rounded-md w-full h-fit p-4 pl-16'
+            className='flex flex-row items-center bg-pri dark:bg-Dpri text-Dtext dark:text-Dtext shadow shadow-Daccent dark:shadow-DSBG rounded-md w-full h-fit p-4 pl-16'
           >
 
             {/* product */}
@@ -106,7 +106,7 @@ const Cart = () => {
 
         {/* total pricing container */}
         <div
-          className='col-span-4 row-span-12 flex flex-col gap-8 w-full min-h-3/5 h-fit p-8 pr-20'
+          className='col-span-4 row-span-12 flex flex-col gap-8 w-full min-h-3/5 h-fit p-8 pr-20 pt-10' 
         >
 
           <div
