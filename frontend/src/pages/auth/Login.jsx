@@ -27,7 +27,7 @@ const Login = () => {
 
             {/* big picture thing */}
             <div
-                className='col-span-3 dark:bg-emerald-800 bg-emerald-500 rounded-md flex flex-col items-start justify-between px-10 py-8 shadow shadow-Daccent dark:shadow-slate-950 relative'
+                className='col-span-3 dark:bg-emerald-800 bg-pri rounded-md flex flex-col items-start justify-between px-10 py-8 shadow shadow-Daccent dark:shadow-slate-950 relative'
             >
 
                 {/* top part */}
