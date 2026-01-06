@@ -24,4 +24,8 @@ class Product_image extends Model
         'sort_order' => 'integer'
     ];
 
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
+
 }

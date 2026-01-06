@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CheckboxBtn from '../../components/buttons/CheckboxBtn'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
+import { useAuth } from '../../context/AuthContext'
 
 const Login = () => {
 
     // context
     const { theme,toggleDarkMode } = useTheme()
+    const { login } = useAuth()
 
     // toggles
     const [showPassword, setShowPassword] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     // state
     const [formDetails, setFormDetails] = useState({
@@ -18,7 +21,41 @@ const Login = () => {
         rememberMe: false
     })
 
+    const navigate = useNavigate()
+
     const [error, setError] = useState('')
+
+    const handleSubmitLogin = async (e) => {
+        e.preventDefault()
+        setIsLoading(true)
+        setError('')
+
+        console.log(formDetails)
+
+        try {
+            await login(formDetails)
+            navigate('/')
+        }
+        catch (Error) {
+            setError(Error)
+        }
+        finally {
+            setIsLoading(false)
+        }
+
+    }
+
+    const handleToggleRemeberMe = () => {
+        // Directly update the state
+        setFormDetails(prevState => ({
+            ...prevState,
+            rememberMe: !prevState.rememberMe
+        }));
+    }
+
+    useEffect(() => {
+        console.log(formDetails.rememberMe)
+    }, [formDetails.rememberMe])
     
     return (
         <div
@@ -179,7 +216,7 @@ const Login = () => {
                     >
                         <CheckboxBtn
                             purpose={'remember me'}
-                            ftn={() => setFormDetails({ ...formDetails, rememberMe: !formDetails.rememberMe })}
+                            ftn={() => handleToggleRemeberMe()}
                             value={formDetails.rememberMe}
                         />
                     </div>
@@ -201,8 +238,13 @@ const Login = () => {
                     {/* login button */}
                     <button
                         className='w-full h-fit p-2 bg-pri hover:bg-sec dark:bg-Dpri dark:hover:bg-Dsec rounded-md text-Dtext font-semibold duration-200 shadow shadow-Daccent dark:shadow-slate-950 '
+                        onClick={handleSubmitLogin}
                     >
-                        Log in
+                        {
+                            isLoading
+                            ? 'Loading...'
+                            : 'Log In'
+                        }
                     </button>
                     <Link
                         className='text-sm dark:text-Daccent text-accent w-full text-center hover:text-pri dark:hover:text-Dpri duration-200'

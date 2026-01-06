@@ -57,14 +57,15 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     };
 
-    const login = async (email, password, rememberMe) => {
+    const login = async (formDetails) => {
+
         try {
             const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password, rememberMe }),
+                body: JSON.stringify({ email: formDetails.email, password: formDetails.password, rememberMe: formDetails.rememberMe }),
             });
 
             if (!response.ok) {
@@ -74,7 +75,9 @@ export const AuthProvider = ({ children }) => {
 
             const data = await response.json();
 
-            if (rememberMe) {
+            console.log(data)
+
+            if (formDetails.rememberMe) {
                 localStorage.setItem('token', data.token);
                 setUser(data.user);    
             }
@@ -82,7 +85,7 @@ export const AuthProvider = ({ children }) => {
                 setUser(data.user);    
             }
         
-            return data;
+            return true;
         } catch (error) {
             throw error;
         }

@@ -5,7 +5,7 @@ const CheckboxBtn = ({ purpose, value, ftn }) => {
     const [isChecked, setIsChecked] = useState(false)
 
     const handleChange = () => {
-        ftn
+        ftn()
         setIsChecked(!isChecked)
     }
 
